@@ -3,6 +3,7 @@ package com.native_modules;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
+import android.os.Build;
 import android.provider.Settings;
 import android.widget.Toast;
 
@@ -50,6 +51,19 @@ public class CustomModule extends ReactContextBaseJavaModule {
 //        System.out.print(level);
         successCallback.invoke(null ,((float)level / (float)scale) * 100.0f);
     }
+    //Get API Level
+    @ReactMethod(isBlockingSynchronousMethod = true)
+    public int getApiLevelSync() { return Build.VERSION.SDK_INT; }
+    @ReactMethod
+    public void getApiLevel(Promise p) { p.resolve(getApiLevelSync()); }
+
+    //Get Based OS
+    @ReactMethod(isBlockingSynchronousMethod = true)
+    public String getBuildNumberSync() {
+        return Build.VERSION.RELEASE;
+    }
+    @ReactMethod
+    public void getBuildNumber(Promise p){p.resolve(getBuildNumberSync());}
 
     @NonNull
     @Override

@@ -28,6 +28,20 @@ const HomeScreen = ({
             navigation.navigate('BatteryInfoScreen')
           }}
         />
+        <View style={STYLES.button}/>
+        <Button
+          title="Get API Level"
+          onPress={()=>{
+            navigation.navigate('APILevel')
+          }}
+        />
+        <View style={STYLES.button}/>
+        <Button
+          title="Get Release Number"
+          onPress={()=>{
+            navigation.navigate('ReleaseNumberScreen')
+          }}
+        />
     </View>
 )};
 
